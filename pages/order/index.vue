@@ -17,6 +17,14 @@
 				<view class="span">处罚决定书编号：</view>
 				<view class="span">{{orderInfo.jdsbh}}</view>
 			</view>
+			<view class="li">
+				<view class="span">车牌号：</view>
+				<view class="span">{{orderInfo.hphm}}</view>
+			</view>
+			<view class="li">
+				<view class="span">违法地点：</view>
+				<view class="span">{{orderInfo.wfdz}}</view>
+			</view>
 		</view>
 		<view class="ulTitle" v-if="isShow">
 			<image mode="widthFix" src="../../static/icon2.png"></image>
@@ -40,7 +48,7 @@
 		</view>
 		<view class="ulTitle" v-if="isShow">
 			<image mode="widthFix" src="../../static/icon3.png"></image>
-			<text>绑定手机号</text>
+			<text>通知手机</text>
 		</view>
 		<view class="ul" v-if="isShow">
 			<view class="li flexSpace">

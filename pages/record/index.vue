@@ -9,7 +9,7 @@
 			    点击授权
 			</button>
 		</view>
-		<uni-segmented-control :current="current" :values="items" @clickItem="onClickItem" style-type="button" active-color="#007aff">
+		<uni-segmented-control :current="current" :values="items" @clickItem="onClickItem" style-type="button" :active-color="color()">
 		</uni-segmented-control>
 		<view class="orderCont" v-if="list && list.length">
 			<view class="orderItem" @click="goDetail(item.id)" v-for="item in list">
@@ -49,6 +49,17 @@
 			this.getList('all');
 		},
 		methods: {
+			color(){
+				if (this.$type === 1) {
+					return '#007aff'
+				} else if (this.$type === 2) {
+					return '#dd524d'
+				} else if (this.$type === 3) {
+					return '#f0ad4e'
+				} else if (this.$type === 4) {
+					return '#4cd964'
+				}
+			},
 			getList (index) {
 				this.list = null
 				const params = {

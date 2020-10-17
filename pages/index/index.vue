@@ -9,7 +9,7 @@
 		</view>
 		<view class="noticeTit" v-if="isShow">
 			<view>
-				*订单36小时内完成，加急单60分钟
+				*订单24小时内完成，加急单60分钟
 			</view>
 			<view>
 				<icon type="info" size="16"/>
@@ -24,6 +24,10 @@
 			<image mode="widthFix" class="images" src="../../static/icon4.png"></image>
 			<image mode="widthFix" class="images" src="../../static/icon12.png"></image>
 		</view>
+		<view class="gs">
+			<text v-if="kefu">服务热线：{{kefu}}</text>
+			<text>工作时间早8:00到晚8:00</text>
+		</view>
     </view>
 </template>
 
@@ -33,6 +37,7 @@
 	        return {
 				isShow: getApp().globalData.isShow,
 	            inputValue: '',
+				kefu: null,
 				isLoad: false,
 	        }
 	    },
@@ -40,9 +45,20 @@
 			this.getConfig()
 		},
 	    methods: {
-			getConfig () {
-				this.isLoad = true;
-				this.$api.config().then(res => {
+			color(){
+				if (this.$type === 1) {
+					return '#007aff'
+				} else if (this.$type === 2) {
+					return '#dd524d'
+				} else if (this.$type === 3) {
+					return '#f0ad4e'
+				} else if (this.$type === 4) {
+					return '#4cd964'
+				}
+			},
+			getActivity(type, res) {
+				// 第一个app
+				if (type === 1) {
 					my.navigateToMiniProgram({
 						appId: '2018122562686742',
 						path: `pages/index/index?originAppId=2019101468369526&newUserTemplate=${res.activity_id || 'KP20191216000002176162'}`,
@@ -51,17 +67,42 @@
 						},
 						fail: (res) => {}
 					});
-					getApp().globalData.isShow = res.is_show_jf === '1'
-					this.isShow = res.is_show_jf === '1'
-					if (res.is_show_jf === '1') {
-						const appId = '123'
-						const templateId = '123'
-						this.getAuth()
-						this.noticeModal()
-						uni.showTabBar()
-					} else {
-						uni.hideTabBar()
-					}
+				} else if (type === 2) {
+					// 第二个app
+					my.navigateToMiniProgram({
+						appId: '2018122562686742',
+						path: `pages/index/index?originAppId=2021001198661407&newUserTemplate=${res.activity_id2 || 'KP20201017000002732219'}`,
+					});
+				} else if (type === 3) {
+					// 第三个app
+					my.navigateToMiniProgram({
+						appId: '2018122562686742',
+						path: `pages/index/index?originAppId=2021001198645779&newUserTemplate=${res.activity_id3 || 'KP20201017000002732087'}`,
+					});
+				} else if (type === 4) {
+					// 第四个app
+					my.navigateToMiniProgram({
+						appId: '2018122562686742',
+						path: `pages/index/index?originAppId=2021001193682570&newUserTemplate=${res.activity_id4 || 'KP20201017000002732089'}`,
+					});
+				}
+				getApp().globalData.isShow = res['is_show_jf'+ type] === '1'
+				this.isShow = res['is_show_jf'+ type] === '1'
+				this.kefu = res.kefu_mobie
+				if (res['is_show_jf'+ type] === '1') {
+					const appId = '123'
+					const templateId = '123'
+					this.getAuth()
+					this.noticeModal()
+					uni.showTabBar()
+				} else {
+					uni.hideTabBar()
+				}
+			},
+			getConfig () {
+				this.isLoad = true;
+				this.$api.config().then(res => {
+					this.getActivity(this.$type, res)
 				}).catch(err => {
 					console.log(err)
 				})
@@ -152,6 +193,8 @@
 		min-height: 100vh;
 		background: #eee;
 		color: #fff;
+		position: relative;
+		padding-bottom: 60px;
 		.searchTitle{
 			font-size: 16px;
 			font-weight: bold;
@@ -177,7 +220,7 @@
 			input{
 				flex: 1;
 				padding: 0;
-				color: #007AFF;
+				color: #f0ad4e;
 				font-size: 14px;
 			}
 		}
@@ -218,8 +261,23 @@
 		line-height: 40px;
 		margin: 10px auto;
 		border-radius: 30px;
-		background: #007AFF;
+		background: #f0ad4e;
 		color: #fff;
-		border: 1px solid #0066CC;
+		border: 1px solid #f0ad4e;
+	}
+	.gs{
+		background: #f0ad4e;
+		color: #fff;
+		text-align: center;
+		font-size: 14px;
+		padding: 10px 20px;
+		position: absolute;
+		bottom:0;
+		left: 0;
+		right: 0;
+		text{
+			margin: 0 10px
+		}
+		
 	}
 </style>
