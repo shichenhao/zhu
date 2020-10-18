@@ -8,7 +8,7 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.createApp = createApp;exports.createComponent = createComponent;exports.createPage = createPage;exports.default = void 0;var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _slicedToArray(arr, i) {return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();}function _nonIterableRest() {throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");}function _iterableToArrayLimit(arr, i) {if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return;var _arr = [];var _n = true;var _d = false;var _e = undefined;try {for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {_arr.push(_s.value);if (i && _arr.length === i) break;}} catch (err) {_d = true;_e = err;} finally {try {if (!_n && _i["return"] != null) _i["return"]();} finally {if (_d) throw _e;}}return _arr;}function _arrayWithHoles(arr) {if (Array.isArray(arr)) return arr;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}function _classCallCheck(instance, Constructor) {if (!(instance instanceof Constructor)) {throw new TypeError("Cannot call a class as a function");}}function _defineProperties(target, props) {for (var i = 0; i < props.length; i++) {var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);}}function _createClass(Constructor, protoProps, staticProps) {if (protoProps) _defineProperties(Constructor.prototype, protoProps);if (staticProps) _defineProperties(Constructor, staticProps);return Constructor;}function _toConsumableArray(arr) {return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread();}function _nonIterableSpread() {throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");}function _unsupportedIterableToArray(o, minLen) {if (!o) return;if (typeof o === "string") return _arrayLikeToArray(o, minLen);var n = Object.prototype.toString.call(o).slice(8, -1);if (n === "Object" && o.constructor) n = o.constructor.name;if (n === "Map" || n === "Set") return Array.from(o);if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);}function _iterableToArray(iter) {if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter);}function _arrayWithoutHoles(arr) {if (Array.isArray(arr)) return _arrayLikeToArray(arr);}function _arrayLikeToArray(arr, len) {if (len == null || len > arr.length) len = arr.length;for (var i = 0, arr2 = new Array(len); i < len; i++) {arr2[i] = arr[i];}return arr2;}
+Object.defineProperty(exports, "__esModule", { value: true });exports.createApp = createApp;exports.createComponent = createComponent;exports.createPage = createPage;exports.default = void 0;var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _slicedToArray(arr, i) {return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();}function _nonIterableRest() {throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");}function _iterableToArrayLimit(arr, i) {if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return;var _arr = [];var _n = true;var _d = false;var _e = undefined;try {for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {_arr.push(_s.value);if (i && _arr.length === i) break;}} catch (err) {_d = true;_e = err;} finally {try {if (!_n && _i["return"] != null) _i["return"]();} finally {if (_d) throw _e;}}return _arr;}function _arrayWithHoles(arr) {if (Array.isArray(arr)) return arr;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}function _toConsumableArray(arr) {return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread();}function _nonIterableSpread() {throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");}function _unsupportedIterableToArray(o, minLen) {if (!o) return;if (typeof o === "string") return _arrayLikeToArray(o, minLen);var n = Object.prototype.toString.call(o).slice(8, -1);if (n === "Object" && o.constructor) n = o.constructor.name;if (n === "Map" || n === "Set") return Array.from(n);if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);}function _iterableToArray(iter) {if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter);}function _arrayWithoutHoles(arr) {if (Array.isArray(arr)) return _arrayLikeToArray(arr);}function _arrayLikeToArray(arr, len) {if (len == null || len > arr.length) len = arr.length;for (var i = 0, arr2 = new Array(len); i < len; i++) {arr2[i] = arr[i];}return arr2;}
 
 var _toString = Object.prototype.toString;
 var hasOwnProperty = Object.prototype.hasOwnProperty;
@@ -144,7 +144,7 @@ function queue(hooks, data) {
   for (var i = 0; i < hooks.length; i++) {
     var hook = hooks[i];
     if (promise) {
-      promise = Promise.resolve(wrapperHook(hook));
+      promise = Promise.then(wrapperHook(hook));
     } else {
       var res = hook(data);
       if (isPromise(res)) {
@@ -363,144 +363,7 @@ var baseApi = /*#__PURE__*/Object.freeze({
   upx2px: upx2px,
   addInterceptor: addInterceptor,
   removeInterceptor: removeInterceptor,
-  interceptors: interceptors });var
-
-
-EventChannel = /*#__PURE__*/function () {
-  function EventChannel(id, events) {var _this = this;_classCallCheck(this, EventChannel);
-    this.id = id;
-    this.listener = {};
-    this.emitCache = {};
-    if (events) {
-      Object.keys(events).forEach(function (name) {
-        _this.on(name, events[name]);
-      });
-    }
-  }_createClass(EventChannel, [{ key: "emit", value: function emit(
-
-    eventName) {for (var _len3 = arguments.length, args = new Array(_len3 > 1 ? _len3 - 1 : 0), _key3 = 1; _key3 < _len3; _key3++) {args[_key3 - 1] = arguments[_key3];}
-      var fns = this.listener[eventName];
-      if (!fns) {
-        return (this.emitCache[eventName] || (this.emitCache[eventName] = [])).push(args);
-      }
-      fns.forEach(function (opt) {
-        opt.fn.apply(opt.fn, args);
-      });
-      this.listener[eventName] = fns.filter(function (opt) {return opt.type !== 'once';});
-    } }, { key: "on", value: function on(
-
-    eventName, fn) {
-      this._addListener(eventName, 'on', fn);
-      this._clearCache(eventName);
-    } }, { key: "once", value: function once(
-
-    eventName, fn) {
-      this._addListener(eventName, 'once', fn);
-      this._clearCache(eventName);
-    } }, { key: "off", value: function off(
-
-    eventName, fn) {
-      var fns = this.listener[eventName];
-      if (!fns) {
-        return;
-      }
-      if (fn) {
-        for (var i = 0; i < fns.length;) {
-          if (fns[i].fn === fn) {
-            fns.splice(i, 1);
-            i--;
-          }
-          i++;
-        }
-      } else {
-        delete this.listener[eventName];
-      }
-    } }, { key: "_clearCache", value: function _clearCache(
-
-    eventName) {
-      var cacheArgs = this.emitCache[eventName];
-      if (cacheArgs) {
-        for (; cacheArgs.length > 0;) {
-          this.emit.apply(this, [eventName].concat(cacheArgs.shift()));
-        }
-      }
-    } }, { key: "_addListener", value: function _addListener(
-
-    eventName, type, fn) {
-      (this.listener[eventName] || (this.listener[eventName] = [])).push({
-        fn: fn,
-        type: type });
-
-    } }]);return EventChannel;}();
-
-
-var eventChannels = {};
-
-var eventChannelStack = [];
-
-var id = 0;
-
-function initEventChannel(events) {var cache = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
-  id++;
-  var eventChannel = new EventChannel(id, events);
-  if (cache) {
-    eventChannels[id] = eventChannel;
-    eventChannelStack.push(eventChannel);
-  }
-  return eventChannel;
-}
-
-function getEventChannel(id) {
-  if (id) {
-    var eventChannel = eventChannels[id];
-    delete eventChannels[id];
-    return eventChannel;
-  }
-  return eventChannelStack.shift();
-}
-
-var navigateTo = {
-  args: function args(fromArgs, toArgs) {
-    var id = initEventChannel(fromArgs.events).id;
-    if (fromArgs.url) {
-      fromArgs.url = fromArgs.url + (fromArgs.url.indexOf('?') === -1 ? '?' : '&') + '__id__=' + id;
-    }
-  },
-  returnValue: function returnValue(fromRes, toRes) {
-    fromRes.eventChannel = getEventChannel();
-  } };
-
-
-function findExistsPageIndex(url) {
-  var pages = getCurrentPages();
-  var len = pages.length;
-  while (len--) {
-    var page = pages[len];
-    if (page.$page && page.$page.fullPath === url) {
-      return len;
-    }
-  }
-  return -1;
-}
-
-var redirectTo = {
-  name: function name(fromArgs) {
-    if (fromArgs.exists === 'back' && fromArgs.delta) {
-      return 'navigateBack';
-    }
-    return 'redirectTo';
-  },
-  args: function args(fromArgs) {
-    if (fromArgs.exists === 'back' && fromArgs.url) {
-      var existsPageIndex = findExistsPageIndex(fromArgs.url);
-      if (existsPageIndex !== -1) {
-        var delta = getCurrentPages().length - 1 - existsPageIndex;
-        if (delta > 0) {
-          fromArgs.delta = delta;
-        }
-      }
-    }
-  } };
+  interceptors: interceptors });
 
 
 // 不支持的 API 列表
@@ -581,8 +444,6 @@ function _handleSystemInfo(result) {
 }
 
 var protocols = { // 需要做转换的 API 列表
-  navigateTo: navigateTo,
-  redirectTo: redirectTo,
   returnValue: function returnValue(methodName) {var res = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {}; // 通用 returnValue 解析
     if (res.error || res.errorMessage) {
       res.errMsg = "".concat(methodName, ":fail ").concat(res.errorMessage || res.error);
@@ -615,8 +476,7 @@ var protocols = { // 需要做转换的 API 列表
         },
         data: function data(_data) {
           // 钉钉小程序在content-type为application/json时需上传字符串形式data，使用my.dd在真机运行钉钉小程序时不能正确判断
-          if (my.canIUse('saveFileToDingTalk') && method.toUpperCase() === 'POST' && headers['content-type'].indexOf(
-          'application/json') === 0 && isPlainObject(_data)) {
+          if (my.canIUse('saveFileToDingTalk') && method.toUpperCase() === 'POST' && headers['content-type'].indexOf('application/json') === 0 && isPlainObject(_data)) {
             return {
               name: 'data',
               value: JSON.stringify(_data) };
@@ -789,10 +649,8 @@ var protocols = { // 需要做转换的 API 列表
 
   getSavedFileInfo: {
     args: {
-      filePath: 'apFilePath' } },
+      filePath: 'apFilePath' },
 
-
-  getSavedFileList: {
     returnValue: function returnValue(result) {
       if (result.fileList && result.fileList.length) {
         result.fileList.forEach(function (file) {
@@ -1007,9 +865,7 @@ function processArgs(methodName, fromArgs) {var argsOption = arguments.length > 
           toArgs[keyOption.name ? keyOption.name : key] = keyOption.value;
         }
       } else if (CALLBACKS.indexOf(key) !== -1) {
-        if (isFn(fromArgs[key])) {
-          toArgs[key] = processCallback(methodName, fromArgs[key], returnValue);
-        }
+        toArgs[key] = processCallback(methodName, fromArgs[key], returnValue);
       } else {
         if (!keepFromArgs) {
           toArgs[key] = fromArgs[key];
@@ -1050,12 +906,7 @@ function wrapper(methodName, method) {
       if (typeof arg2 !== 'undefined') {
         args.push(arg2);
       }
-      if (isFn(options.name)) {
-        methodName = options.name(arg1);
-      } else if (isStr(options.name)) {
-        methodName = options.name;
-      }
-      var returnValue = my[methodName].apply(my, args);
+      var returnValue = my[options.name || methodName].apply(my, args);
       if (isSyncApi(methodName)) {// 同步 api
         return processReturnValue(methodName, returnValue, options.returnValue, isContextApi(methodName));
       }
@@ -1129,6 +980,10 @@ var extraApi = /*#__PURE__*/Object.freeze({
 
 
 var getEmitter = function () {
+  if (typeof getUniEmitter === 'function') {
+    /* eslint-disable no-undef */
+    return getUniEmitter;
+  }
   var Emitter;
   return function getUniEmitter() {
     if (!Emitter) {
@@ -1162,98 +1017,6 @@ var eventApi = /*#__PURE__*/Object.freeze({
   $once: $once,
   $emit: $emit });
 
-
-function createMediaQueryObserver() {
-  var mediaQueryObserver = {};var _my$getSystemInfoSync2 =
-
-
-
-  my.getSystemInfoSync(),windowWidth = _my$getSystemInfoSync2.windowWidth,windowHeight = _my$getSystemInfoSync2.windowHeight;
-
-  var orientation = windowWidth < windowHeight ? 'portrait' : 'landscape';
-
-  mediaQueryObserver.observe = function (options, callback) {
-    var matches = true;
-    for (var item in options) {
-      var itemValue = item === 'orientation' ? options[item] : Number(options[item]);
-      if (options[item] !== '') {
-        if (item === 'width') {
-          if (itemValue === windowWidth) {
-            matches = true;
-          } else {
-            matches = false;
-            callback(matches);
-            return matches;
-          }
-        }
-        if (item === 'minWidth') {
-          if (windowWidth >= itemValue) {
-            matches = true;
-          } else {
-            matches = false;
-            callback(matches);
-            return matches;
-          }
-        }
-        if (item === 'maxWidth') {
-          if (windowWidth <= itemValue) {
-            matches = true;
-          } else {
-            matches = false;
-            callback(matches);
-            return matches;
-          }
-        }
-
-        if (item === 'height') {
-          if (itemValue === windowHeight) {
-            matches = true;
-          } else {
-            matches = false;
-            callback(matches);
-            return matches;
-          }
-        }
-        if (item === 'minHeight') {
-          if (windowHeight >= itemValue) {
-            matches = true;
-          } else {
-            matches = false;
-            callback(matches);
-            return matches;
-          }
-        }
-        if (item === 'maxHeight') {
-          if (windowHeight <= itemValue) {
-            matches = true;
-          } else {
-            matches = false;
-            callback(matches);
-            return matches;
-          }
-        }
-
-        if (item === 'orientation') {
-          if (options[item] === orientation) {
-            matches = true;
-          } else {
-            matches = false;
-            callback(matches);
-            return matches;
-          }
-        }
-      }
-    }
-    callback(matches);
-
-    return matches;
-  };
-
-  mediaQueryObserver.disconnect = function () {
-  };
-
-  return mediaQueryObserver;
-}
 
 function setStorageSync(key, data) {
   return my.setStorageSync({
@@ -1364,15 +1127,12 @@ var api = /*#__PURE__*/Object.freeze({
   removeStorageSync: removeStorageSync,
   startGyroscope: startGyroscope,
   createSelectorQuery: createSelectorQuery,
-  createIntersectionObserver: createIntersectionObserver,
-  createMediaQueryObserver: createMediaQueryObserver });
+  createIntersectionObserver: createIntersectionObserver });
 
 
 var PAGE_EVENT_HOOKS = [
 'onPullDownRefresh',
 'onReachBottom',
-'onAddToFavorites',
-'onShareTimeline',
 'onShareAppMessage',
 'onPageScroll',
 'onResize',
@@ -1564,11 +1324,6 @@ function initProperties(props) {var isBehavior = arguments.length > 1 && argumen
       type: String,
       value: '' };
 
-    // 用于字节跳动小程序模拟抽象节点
-    properties.generic = {
-      type: Object,
-      value: null };
-
     properties.vueSlots = { // 小程序不能直接定义 $slots 的 props，所以通过 vueSlots 转换到 $slots
       type: null,
       value: [],
@@ -1654,18 +1409,7 @@ function getExtraValue(vm, dataPathsArray) {
       var propPath = dataPathArray[1];
       var valuePath = dataPathArray[3];
 
-      var vFor;
-      if (Number.isInteger(dataPath)) {
-        vFor = dataPath;
-      } else if (!dataPath) {
-        vFor = context;
-      } else if (typeof dataPath === 'string' && dataPath) {
-        if (dataPath.indexOf('#s#') === 0) {
-          vFor = dataPath.substr(3);
-        } else {
-          vFor = vm.__get_value(dataPath, context);
-        }
-      }
+      var vFor = dataPath ? vm.__get_value(dataPath, context) : context;
 
       if (Number.isInteger(vFor)) {
         context = value;
@@ -1715,12 +1459,6 @@ function processEventExtra(vm, extra, event) {
         } else {
           if (dataPath === '$event') {// $event
             extraObj['$' + index] = event;
-          } else if (dataPath === 'arguments') {
-            if (event.detail && event.detail.__args__) {
-              extraObj['$' + index] = event.detail.__args__;
-            } else {
-              extraObj['$' + index] = [event];
-            }
           } else if (dataPath.indexOf('$event.') === 0) {// $event.target.value
             extraObj['$' + index] = vm.__get_value(dataPath.replace('$event.', ''), event);
           } else {
@@ -1801,16 +1539,7 @@ function isMatchEventType(eventType, optType) {
 
 }
 
-function getContextVm(vm) {
-  var $parent = vm.$parent;
-  // 父组件是 scoped slots 或者其他自定义组件时继续查找
-  while ($parent && $parent.$parent && ($parent.$options.generic || $parent.$parent.$options.generic || $parent.$scope._$vuePid)) {
-    $parent = $parent.$parent;
-  }
-  return $parent && $parent.$parent;
-}
-
-function handleEvent(event) {var _this2 = this;
+function handleEvent(event) {var _this = this;
   event = wrapper$1(event);
 
   // [['tap',[['handle',[1,2,a]],['handle1',[1,2,a]]]]]
@@ -1841,14 +1570,18 @@ function handleEvent(event) {var _this2 = this;
       eventsArray.forEach(function (eventArray) {
         var methodName = eventArray[0];
         if (methodName) {
-          var handlerCtx = _this2.$vm;
-          if (handlerCtx.$options.generic) {// mp-weixin,mp-toutiao 抽象节点模拟 scoped slots
-            handlerCtx = getContextVm(handlerCtx) || handlerCtx;
+          var handlerCtx = _this.$vm;
+          if (
+          handlerCtx.$options.generic &&
+          handlerCtx.$parent &&
+          handlerCtx.$parent.$parent)
+          {// mp-weixin,mp-toutiao 抽象节点模拟 scoped slots
+            handlerCtx = handlerCtx.$parent.$parent;
           }
           if (methodName === '$emit') {
             handlerCtx.$emit.apply(handlerCtx,
             processEventArgs(
-            _this2.$vm,
+            _this.$vm,
             event,
             eventArray[1],
             eventArray[2],
@@ -1867,17 +1600,14 @@ function handleEvent(event) {var _this2 = this;
             }
             handler.once = true;
           }
-          var params = processEventArgs(
-          _this2.$vm,
+          ret.push(handler.apply(handlerCtx, processEventArgs(
+          _this.$vm,
           event,
           eventArray[1],
           eventArray[2],
           isCustom,
-          methodName);
+          methodName)));
 
-          // 参数尾部增加原始事件对象用于复杂表达式内获取额外数据
-          // eslint-disable-next-line no-sparse-arrays
-          ret.push(handler.apply(handlerCtx, (Array.isArray(params) ? params : []).concat([,,,,,,,,,, event])));
         }
       });
     }
@@ -1896,9 +1626,7 @@ var hooks = [
 'onShow',
 'onHide',
 'onError',
-'onPageNotFound',
-'onThemeChange',
-'onUnhandledRejection'];
+'onPageNotFound'];
 
 
 function parseBaseApp(vm, _ref6)
@@ -2178,12 +1906,10 @@ function triggerEvent(type, detail, options) {
   }
 
   var eventOpts = this.props['data-event-opts'];
-  var eventParams = this.props['data-event-params'];
 
   var target = {
     dataset: {
-      eventOpts: eventOpts,
-      eventParams: eventParams } };
+      eventOpts: eventOpts } };
 
 
 
@@ -2198,7 +1924,7 @@ function triggerEvent(type, detail, options) {
 var IGNORES = ['$slots', '$scopedSlots'];
 
 function createObserver$1(isDidUpdate) {
-  return function observe(props) {var _this3 = this;
+  return function observe(props) {var _this2 = this;
     var prevProps = isDidUpdate ? props : this.props;
     var nextProps = isDidUpdate ? this.props : props;
     if (equal(prevProps, nextProps)) {
@@ -2209,7 +1935,7 @@ function createObserver$1(isDidUpdate) {
         var prevValue = prevProps[name];
         var nextValue = nextProps[name];
         if (!isFn(prevValue) && !isFn(nextValue) && !equal(prevValue, nextValue)) {
-          _this3.$vm[name] = nextProps[name];
+          _this2.$vm[name] = nextProps[name];
         }
       }
     });
@@ -2256,7 +1982,7 @@ function parseApp(vm) {
     } });
 
 
-  _vue.default.prototype.$onAliGetAuthorize = function onAliGetAuthorize(method, $event) {var _this4 = this;
+  _vue.default.prototype.$onAliGetAuthorize = function onAliGetAuthorize(method, $event) {var _this3 = this;
     my.getPhoneNumber({
       success: function success(res) {
         $event.type = 'getphonenumber';
@@ -2267,12 +1993,12 @@ function parseApp(vm) {
         } else {
           $event.detail.errMsg = 'getPhoneNumber:fail Error: ' + res.response;
         }
-        _this4[method]($event);
+        _this3[method]($event);
       },
       fail: function fail(res) {
         $event.type = 'getphonenumber';
         $event.detail.errMsg = 'getPhoneNumber:fail';
-        _this4[method]($event);
+        _this3[method]($event);
       } });
 
   };
@@ -2290,65 +2016,8 @@ function parseApp(vm) {
 }
 
 function createApp(vm) {
-  _vue.default.prototype.getOpenerEventChannel = function () {
-    if (!this.__eventChannel__) {
-      this.__eventChannel__ = new EventChannel();
-    }
-    return this.__eventChannel__;
-  };
-  var callHook = _vue.default.prototype.__call_hook;
-  _vue.default.prototype.__call_hook = function (hook, args) {
-    if (hook === 'onLoad' && args && args.__id__) {
-      this.__eventChannel__ = getEventChannel(args.__id__);
-      delete args.__id__;
-    }
-    return callHook.call(this, hook, args);
-  };
   App(parseApp(vm));
   return vm;
-}
-
-var encodeReserveRE = /[!'()*]/g;
-var encodeReserveReplacer = function encodeReserveReplacer(c) {return '%' + c.charCodeAt(0).toString(16);};
-var commaRE = /%2C/g;
-
-// fixed encodeURIComponent which is more conformant to RFC3986:
-// - escapes [!'()*]
-// - preserve commas
-var encode = function encode(str) {return encodeURIComponent(str).
-  replace(encodeReserveRE, encodeReserveReplacer).
-  replace(commaRE, ',');};
-
-function stringifyQuery(obj) {var encodeStr = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : encode;
-  var res = obj ? Object.keys(obj).map(function (key) {
-    var val = obj[key];
-
-    if (val === undefined) {
-      return '';
-    }
-
-    if (val === null) {
-      return encodeStr(key);
-    }
-
-    if (Array.isArray(val)) {
-      var result = [];
-      val.forEach(function (val2) {
-        if (val2 === undefined) {
-          return;
-        }
-        if (val2 === null) {
-          result.push(encodeStr(key));
-        } else {
-          result.push(encodeStr(key) + '=' + encodeStr(val2));
-        }
-      });
-      return result.join('&');
-    }
-
-    return encodeStr(key) + '=' + encodeStr(val);
-  }).filter(function (x) {return x.length > 0;}).join('&') : null;
-  return res ? "?".concat(res) : '';
 }
 
 var hooks$1 = [
@@ -2369,7 +2038,7 @@ function parsePage(vuePageOptions) {var _initVueComponent =
   var pageOptions = {
     mixins: initBehaviors(vueOptions, initBehavior),
     data: initData(vueOptions, _vue.default.prototype),
-    onLoad: function onLoad(query) {
+    onLoad: function onLoad(args) {
       var properties = this.props;
 
       var options = {
@@ -2386,16 +2055,8 @@ function parsePage(vuePageOptions) {var _initVueComponent =
       // 触发首次 setData
       this.$vm.$mount();
 
-      var copyQuery = Object.assign({}, query);
-      delete copyQuery.__id__;
-
-      this.$page = {
-        fullPath: '/' + this.route + stringifyQuery(copyQuery) };
-
-
-      this.options = query;
-      this.$vm.$mp.query = query; // 兼容 mpvue
-      this.$vm.__call_hook('onLoad', query);
+      this.$vm.$mp.query = args; // 兼容 mpvue
+      this.$vm.__call_hook('onLoad', args);
     },
     onReady: function onReady() {
       initChildVues(this);
@@ -2419,14 +2080,6 @@ function parsePage(vuePageOptions) {var _initVueComponent =
 
 
   initHooks(pageOptions, hooks$1, vuePageOptions);
-
-  if (Array.isArray(vueOptions.wxsCallMethods)) {
-    vueOptions.wxsCallMethods.forEach(function (callMethod) {
-      pageOptions[callMethod] = function (args) {
-        return this.$vm[callMethod](args);
-      };
-    });
-  }
 
   return pageOptions;
 }
@@ -2507,10 +2160,10 @@ function parseComponent(vueComponentOptions) {var _initVueComponent3 =
     mixins: initBehaviors(vueOptions, initBehavior),
     data: initData(vueOptions, _vue.default.prototype),
     props: props,
-    didMount: function didMount() {var _this5 = this;
+    didMount: function didMount() {var _this4 = this;
       if (my.dd) {// 钉钉小程序底层基础库有 bug,组件嵌套使用时,在 didMount 中无法及时调用 props 中的方法
         setTimeout(function () {
-          initVm.call(_this5, VueComponent);
+          initVm.call(_this4, VueComponent);
         }, 4);
       } else {
         initVm.call(this, VueComponent);
@@ -2544,14 +2197,6 @@ function parseComponent(vueComponentOptions) {var _initVueComponent3 =
     componentOptions.didUpdate = createObserver$1(true);
   }
 
-  if (Array.isArray(vueOptions.wxsCallMethods)) {
-    vueOptions.wxsCallMethods.forEach(function (callMethod) {
-      componentOptions.methods[callMethod] = function (args) {
-        return this.$vm[callMethod](args);
-      };
-    });
-  }
-
   return componentOptions;
 }
 
@@ -2578,7 +2223,7 @@ var uni = {};
 if (typeof Proxy !== 'undefined' && "mp-alipay" !== 'app-plus') {
   uni = new Proxy({}, {
     get: function get(target, name) {
-      if (hasOwn(target, name)) {
+      if (target[name]) {
         return target[name];
       }
       if (baseApi[name]) {
@@ -3353,7 +2998,13 @@ var uid = 0;
  * directives subscribing to it.
  */
 var Dep = function Dep () {
-  this.id = uid++;
+  // fixed by xxxxxx (nvue vuex)
+  /* eslint-disable no-undef */
+  if(typeof SharedObject !== 'undefined'){
+    this.id = SharedObject.uid++;
+  } else {
+    this.id = uid++;
+  }
   this.subs = [];
 };
 
@@ -3390,20 +3041,18 @@ Dep.prototype.notify = function notify () {
 // can be evaluated at a time.
 // fixed by xxxxxx (nvue shared vuex)
 /* eslint-disable no-undef */
-Dep.SharedObject = {};
+Dep.SharedObject = typeof SharedObject !== 'undefined' ? SharedObject : {};
 Dep.SharedObject.target = null;
 Dep.SharedObject.targetStack = [];
 
 function pushTarget (target) {
   Dep.SharedObject.targetStack.push(target);
   Dep.SharedObject.target = target;
-  Dep.target = target;
 }
 
 function popTarget () {
   Dep.SharedObject.targetStack.pop();
   Dep.SharedObject.target = Dep.SharedObject.targetStack[Dep.SharedObject.targetStack.length - 1];
-  Dep.target = Dep.SharedObject.target;
 }
 
 /*  */
@@ -8242,16 +7891,6 @@ function cloneWithData(vm) {
     ret[key] = vm[key];
     return ret
   }, ret);
-
-  // vue-composition-api
-  var compositionApiState = vm.__composition_api_state__ || vm.__secret_vfa_state__;
-  var rawBindings = compositionApiState && compositionApiState.rawBindings;
-  if (rawBindings) {
-    Object.keys(rawBindings).forEach(function (key) {
-      ret[key] = vm[key];
-    });
-  }
-
   //TODO 需要把无用数据处理掉，比如 list=>l0 则 list 需要移除，否则多传输一份数据
   Object.assign(ret, vm.$mp.data || {});
   if (
@@ -8456,7 +8095,7 @@ function getTarget(obj, path) {
   return getTarget(obj[key], parts.slice(1).join('.'))
 }
 
-function internalMixin(Vue) {
+function internalMixin(Vue ) {
 
   Vue.config.errorHandler = function(err, vm, info) {
     Vue.util.warn(("Error in " + info + ": \"" + (err.toString()) + "\""), vm);
@@ -8574,7 +8213,7 @@ function internalMixin(Vue) {
   };
 
   Vue.prototype.__map = function(val, iteratee) {
-    //TODO 暂不考虑 string
+    //TODO 暂不考虑 string,number
     var ret, i, l, keys, key;
     if (Array.isArray(val)) {
       ret = new Array(val.length);
@@ -8588,13 +8227,6 @@ function internalMixin(Vue) {
       for (i = 0, l = keys.length; i < l; i++) {
         key = keys[i];
         ret[key] = iteratee(val[key], key, i);
-      }
-      return ret
-    } else if (typeof val === 'number') {
-      ret = new Array(val);
-      for (i = 0, l = val; i < l; i++) {
-        // 第一个参数暂时仍和小程序一致
-        ret[i] = iteratee(i, i);
       }
       return ret
     }
@@ -8611,10 +8243,7 @@ var LIFECYCLE_HOOKS$1 = [
     'onShow',
     'onHide',
     'onUniNViewMessage',
-    'onPageNotFound',
-    'onThemeChange',
     'onError',
-    'onUnhandledRejection',
     //Page
     'onLoad',
     // 'onShow',
@@ -8624,8 +8253,6 @@ var LIFECYCLE_HOOKS$1 = [
     'onPullDownRefresh',
     'onReachBottom',
     'onTabItemTap',
-    'onAddToFavorites',
-    'onShareTimeline',
     'onShareAppMessage',
     'onResize',
     'onPageScroll',
@@ -8723,9 +8350,9 @@ module.exports = g;
 
 /***/ }),
 /* 4 */
-/*!************************************!*\
-  !*** /Users/edz/my/zhu/pages.json ***!
-  \************************************/
+/*!*************************************************!*\
+  !*** /Users/sch/Desktop/work/my/zhu/pages.json ***!
+  \*************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -8866,9 +8493,9 @@ function normalizeComponent (
 
 /***/ }),
 /* 11 */
-/*!****************************************!*\
-  !*** /Users/edz/my/zhu/api/request.js ***!
-  \****************************************/
+/*!*****************************************************!*\
+  !*** /Users/sch/Desktop/work/my/zhu/api/request.js ***!
+  \*****************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -8919,9 +8546,9 @@ request;exports.default = _default;
 
 /***/ }),
 /* 12 */
-/*!***************************************!*\
-  !*** /Users/edz/my/zhu/api/config.js ***!
-  \***************************************/
+/*!****************************************************!*\
+  !*** /Users/sch/Desktop/work/my/zhu/api/config.js ***!
+  \****************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -8937,9 +8564,9 @@ url_config;exports.default = _default;
 
 /***/ }),
 /* 13 */
-/*!**************************************!*\
-  !*** /Users/edz/my/zhu/api/index.js ***!
-  \**************************************/
+/*!***************************************************!*\
+  !*** /Users/sch/Desktop/work/my/zhu/api/index.js ***!
+  \***************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -8947,6 +8574,7 @@ url_config;exports.default = _default;
 Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _request = _interopRequireDefault(__webpack_require__(/*! ./request.js */ 11));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
 var api = {};
+api.getUserInfo = function (params) {return _request.default.globalRequest('/Auth/getuserinfo', 'GET', params);};
 
 api.config = function (params) {return _request.default.globalRequest('/Config/config', 'GET', params);};
 

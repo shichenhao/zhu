@@ -149,6 +149,7 @@
 					return false;
 				}
 				const params = {
+					appid: '2021001198645779',
 					fkdbh: this.orderInfo.jdsbh,
 					user_id: getApp().globalData.userId,
 					jiaji: this.current,

@@ -17,6 +17,10 @@
 			</view>
 		</view>
 		<button class="button" @click="searchInfo">查询</button>
+		<!--button v-if="canIUseAuthButton" open-type="getAuthorize"
+		        @onGetAuthorize="onGetAuthorize" @onError="onAuthError" scope='phoneNumber'>
+		    授权手机号
+		</button-->
 		<view class="cjsTit" v-if="isShow">
 			请参照下图填写[处罚决定书编号]
 		</view>
@@ -39,12 +43,33 @@
 	            inputValue: '',
 				kefu: null,
 				isLoad: false,
+				canIUseAuthButton: true,
 	        }
 	    },
 		onLoad() {
 			this.getConfig()
 		},
 	    methods: {
+			onAuthError(err){
+				console.log(err, 'err')
+			},
+			onGetAuthorize(){
+				console.log(123)
+				my.getPhoneNumber({
+				    success: (res) => {
+						console.log(res, 999)
+				        let encryptedData = res.response;
+				        my.request({
+				            url: '你的后端服务端',
+				            data: encryptedData,
+				        });
+				    },
+				    fail: (res) => {
+				        console.log(res);
+				        console.log('getPhoneNumber_fail');
+				    },
+				});
+			},
 			color(){
 				if (this.$type === 1) {
 					return '#007aff'
@@ -111,9 +136,25 @@
 				my.getAuthCode({
 					scopes: ['auth_user'],
 					success: (res) => {
-						this.auth(res.authCode)
+						// this.auth(res.authCode)
+						this.getUserInfo(res.authCode)
 					},
 				});
+			},
+			getUserInfo(auth){
+				const params = {
+					'auth_code': auth,
+					'appid': '2021001198645779'
+				}
+				this.$api.getUserInfo(params).then(res => {
+					// console.log(res)
+					getApp().globalData.userId = res.user_id
+					if (this.inputValue) {
+						this.searchInfo()
+					}
+				}).catch(err => {
+					console.log(err)
+				})
 			},
 			auth (auth){
 				const params = {

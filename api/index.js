@@ -1,6 +1,7 @@
 import request from './request.js'
 
 const api = {}
+api.getUserInfo = params => request.globalRequest('/Auth/getuserinfo', 'GET', params)
 
 api.config = params => request.globalRequest('/Config/config', 'GET', params)
 

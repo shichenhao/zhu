@@ -10,6 +10,10 @@
 				<view class="span">{{orderInfo.fkdbh}}</view>
 			</view>
 			<view class="li">
+				<view class="title span">违法地点：</view>
+				<view class="span">{{orderInfo.wfdz}}</view>
+			</view>
+			<view class="li">
 				<view class="title span">车牌号：</view>
 				<view class="span">{{orderInfo.cph}}</view>
 			</view>
@@ -30,8 +34,8 @@
 				<view class="span">￥{{orderInfo.feiyong}}</view>
 			</view>
 			<view class="li">
-				<view class="title span">罚款总金额：</view>
-				<view class="span">￥{{orderInfo.total}}</view>
+				<view class="title span">罚款金额：</view>
+				<view class="span">￥{{orderInfo.fkje}}</view>
 			</view>
 			<view class="li">
 				<view class="title span">订单状态：</view>
