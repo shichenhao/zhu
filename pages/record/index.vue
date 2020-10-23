@@ -64,7 +64,20 @@
 				this.list = null
 				const params = {
 					user_id: getApp().globalData.userId,
+					appid: '2021001198645779',
 					status: index < 0 ? 'all' : index
+				}
+				if (this.$type === 1) {
+					params.appid = '2019101468369526'
+				}
+				else if (this.$type === 2) {
+					params.appid = '2021001198661407'
+				}
+				else if (this.$type === 3) {
+					params.appid = '2021001198645779'
+				}
+				else if (this.$type === 4) {
+					params.appid = '2021001193682570'
 				}
 				this.$api.orderList(params).then(res => {
 					this.list = res.data

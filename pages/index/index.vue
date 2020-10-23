@@ -146,6 +146,18 @@
 					'auth_code': auth,
 					'appid': '2021001198645779'
 				}
+				if (this.$type === 1) {
+					params.appid = '2019101468369526'
+				}
+				else if (this.$type === 2) {
+					params.appid = '2021001198661407'
+				}
+				else if (this.$type === 3) {
+					params.appid = '2021001198645779'
+				}
+				else if (this.$type === 4) {
+					params.appid = '2021001193682570'
+				}
 				this.$api.getUserInfo(params).then(res => {
 					// console.log(res)
 					getApp().globalData.userId = res.user_id
@@ -261,7 +273,7 @@
 			input{
 				flex: 1;
 				padding: 0;
-				color: #f0ad4e;
+				color: #4cd964;
 				font-size: 14px;
 			}
 		}
@@ -302,12 +314,12 @@
 		line-height: 40px;
 		margin: 10px auto;
 		border-radius: 30px;
-		background: #f0ad4e;
+		background: #4cd964;
 		color: #fff;
-		border: 1px solid #f0ad4e;
+		border: 1px solid #4cd964;
 	}
 	.gs{
-		background: #f0ad4e;
+		background: #4cd964;
 		color: #fff;
 		text-align: center;
 		font-size: 14px;
