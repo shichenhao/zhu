@@ -3,6 +3,8 @@
 		<view class="titleBox" v-if="isShow">
 			<image mode="widthFix" class="images" src="../../static/icon5.png"></image>
 		</view>
+		<view class="noticeT">业务处理通知</view>
+		<view class="noticeC">订单处理周期1个工作日，加急订单60分钟（早上8：30-晚上20：30）。告知单，通知书系统无法处理。</view>
 		<view class="searchBox">
 			<view class="title">处罚决定书编号：</view>
 			<input confirm-type="search" @input="onKeyInput" maxlength="16" type="idcard" placeholder="《处罚决定书》编号15或16位" />
@@ -11,10 +13,10 @@
 			<view>
 				*订单24小时内完成，加急单60分钟
 			</view>
-			<view>
+			<!--view>
 				<icon type="info" size="16"/>
 				<text @click="noticeModal">办理须知</text>
-			</view>
+			</view-->
 		</view>
 		<button class="button" @click="searchInfo">查询</button>
 		<!--button v-if="canIUseAuthButton" open-type="getAuthorize"
@@ -83,7 +85,7 @@
 			},
 			getActivity(type, res) {
 				// 第一个app
-				if (type === 1) {
+				if (type === 1 && res.activity_switch1) {
 					my.navigateToMiniProgram({
 						appId: '2018122562686742',
 						path: `pages/index/index?originAppId=2019101468369526&newUserTemplate=${res.activity_id || 'KP20191216000002176162'}`,
@@ -92,19 +94,19 @@
 						},
 						fail: (res) => {}
 					});
-				} else if (type === 2) {
+				} else if (type === 2 && res.activity_switch2) {
 					// 第二个app
 					my.navigateToMiniProgram({
 						appId: '2018122562686742',
 						path: `pages/index/index?originAppId=2021001198661407&newUserTemplate=${res.activity_id2 || 'KP20201017000002732219'}`,
 					});
-				} else if (type === 3) {
+				} else if (type === 3 && res.activity_switch3) {
 					// 第三个app
 					my.navigateToMiniProgram({
 						appId: '2018122562686742',
 						path: `pages/index/index?originAppId=2021001198645779&newUserTemplate=${res.activity_id3 || 'KP20201017000002732087'}`,
 					});
-				} else if (type === 4) {
+				} else if (type === 4 && res.activity_switch4) {
 					// 第四个app
 					my.navigateToMiniProgram({
 						appId: '2018122562686742',
@@ -273,7 +275,7 @@
 			input{
 				flex: 1;
 				padding: 0;
-				color: #4cd964;
+				color: #f0ad4e;
 				font-size: 14px;
 			}
 		}
@@ -291,6 +293,17 @@
 		text{
 			margin-left: 5px;
 		}
+	}
+	.noticeT{
+		font-size: 14px;
+		font-weight: bold;
+		color: #333;
+		padding: 20px 10px 10px;
+	}
+	.noticeC{
+		padding: 0 10px;
+		font-size: 12px;
+		color: #666;
 	}
 	.cjsTit{
 		color: #333;
@@ -314,12 +327,12 @@
 		line-height: 40px;
 		margin: 10px auto;
 		border-radius: 30px;
-		background: #4cd964;
+		background: #f0ad4e;
 		color: #fff;
-		border: 1px solid #4cd964;
+		border: 1px solid #f0ad4e;
 	}
 	.gs{
-		background: #4cd964;
+		background: #f0ad4e;
 		color: #fff;
 		text-align: center;
 		font-size: 14px;
