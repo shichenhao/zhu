@@ -18,7 +18,7 @@ _vue.default.config.productionTip = false;
 _vue.default.prototype.$request = _request.default;
 _vue.default.prototype.$api = _index.default;
 _vue.default.prototype.$url = _config.default;
-_vue.default.prototype.$type = 3;
+_vue.default.prototype.$type = 4;
 
 _App.default.mpType = 'app';
 

@@ -275,7 +275,7 @@
 			input{
 				flex: 1;
 				padding: 0;
-				color: #f0ad4e;
+				color: #dd524d;
 				font-size: 14px;
 			}
 		}
@@ -327,12 +327,12 @@
 		line-height: 40px;
 		margin: 10px auto;
 		border-radius: 30px;
-		background: #f0ad4e;
+		background: #dd524d;
 		color: #fff;
-		border: 1px solid #f0ad4e;
+		border: 1px solid #dd524d;
 	}
 	.gs{
-		background: #f0ad4e;
+		background: #dd524d;
 		color: #fff;
 		text-align: center;
 		font-size: 14px;

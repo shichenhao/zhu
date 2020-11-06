@@ -3,7 +3,7 @@
 		{
 			"path": "pages/index/index",
 			"style": {
-				"navigationBarTitleText": "交通罚款单缴纳"
+				"navigationBarTitleText": "罚款单缴纳"
 			}
 		},
 		{
@@ -28,8 +28,8 @@
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",
-		"navigationBarBackgroundColor": "#f0ad4e",
-		"backgroundColor": "#f0ad4e"
+		"navigationBarBackgroundColor": "#dd524d",
+		"backgroundColor": "#dd524d"
 	},
 	"tabBar": {
 	    "color": "#333",
