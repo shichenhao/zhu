@@ -118,7 +118,7 @@
 					const appId = '123'
 					const templateId = '123'
 					this.getAuth()
-					this.noticeModal()
+					// this.noticeModal()
 					uni.showTabBar()
 				} else {
 					uni.hideTabBar()
