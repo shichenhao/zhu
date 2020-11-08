@@ -225,7 +225,7 @@ var _default =
     },
     getActivity: function getActivity(type, res) {
       // 第一个app
-      if (type === 1 && res.activity_switch1) {
+      if (type === 1 && res.activity_switch1 === '1') {
         my.navigateToMiniProgram({
           appId: '2018122562686742',
           path: "pages/index/index?originAppId=2019101468369526&newUserTemplate=".concat(res.activity_id || 'KP20191216000002176162'),
@@ -234,37 +234,51 @@ var _default =
           },
           fail: function fail(res) {} });
 
-      } else if (type === 2 && res.activity_switch2) {
+      } else if (type === 2 && res.activity_switch2 === '1') {
         // 第二个app
         my.navigateToMiniProgram({
           appId: '2018122562686742',
           path: "pages/index/index?originAppId=2021001198661407&newUserTemplate=".concat(res.activity_id2 || 'KP20201017000002732219') });
 
-      } else if (type === 3 && res.activity_switch3) {
+      } else if (type === 3 && res.activity_switch3 === '1') {
         // 第三个app
         my.navigateToMiniProgram({
           appId: '2018122562686742',
           path: "pages/index/index?originAppId=2021001198645779&newUserTemplate=".concat(res.activity_id3 || 'KP20201017000002732087') });
 
-      } else if (type === 4 && res.activity_switch4) {
+      } else if (type === 4 && res.activity_switch4 === '1') {
         // 第四个app
         my.navigateToMiniProgram({
           appId: '2018122562686742',
           path: "pages/index/index?originAppId=2021001193682570&newUserTemplate=".concat(res.activity_id4 || 'KP20201017000002732089') });
 
       }
-      getApp().globalData.isShow = res['is_show_jf' + type] === '1';
-      this.isShow = res['is_show_jf' + type] === '1';
-      this.kefu = res.kefu_mobie;
-      if (res['is_show_jf' + type] === '1') {
-        var appId = '123';
-        var templateId = '123';
-        this.getAuth();
-        // this.noticeModal()
-        uni.showTabBar();
+      if (type === 1) {
+        getApp().globalData.isShow = res['is_show_jf'] === '1';
+        this.isShow = res['is_show_jf'] === '1';
+        if (res['is_show_jf'] === '1') {
+          var appId = '123';
+          var templateId = '123';
+          this.getAuth();
+          // this.noticeModal()
+          uni.showTabBar();
+        } else {
+          uni.hideTabBar();
+        }
       } else {
-        uni.hideTabBar();
+        getApp().globalData.isShow = res['is_show_jf' + type] === '1';
+        this.isShow = res['is_show_jf' + type] === '1';
+        if (res['is_show_jf' + type] === '1') {
+          var _appId = '123';
+          var _templateId = '123';
+          this.getAuth();
+          // this.noticeModal()
+          uni.showTabBar();
+        } else {
+          uni.hideTabBar();
+        }
       }
+      this.kefu = res.kefu_mobie;
     },
     getConfig: function getConfig() {var _this = this;
       this.isLoad = true;

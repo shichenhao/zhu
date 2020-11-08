@@ -3,7 +3,7 @@
 		{
 			"path": "pages/index/index",
 			"style": {
-				"navigationBarTitleText": "罚款单缴纳"
+				"navigationBarTitleText": "宏柯网-违章查询"
 			}
 		},
 		{
@@ -28,8 +28,8 @@
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",
-		"navigationBarBackgroundColor": "#dd524d",
-		"backgroundColor": "#dd524d"
+		"navigationBarBackgroundColor": "#007aff",
+		"backgroundColor": "#007aff"
 	},
 	"tabBar": {
 	    "color": "#333",

@@ -1,6 +1,6 @@
 <template>
     <view class="box">
-		<view class="titleBox" v-if="isShow">
+		<view class="titleBox">
 			<image mode="widthFix" class="images" src="../../static/icon5.png"></image>
 		</view>
 		<view class="noticeT">业务处理通知</view>
@@ -85,7 +85,7 @@
 			},
 			getActivity(type, res) {
 				// 第一个app
-				if (type === 1 && res.activity_switch1) {
+				if (type === 1 && res.activity_switch1 === '1') {
 					my.navigateToMiniProgram({
 						appId: '2018122562686742',
 						path: `pages/index/index?originAppId=2019101468369526&newUserTemplate=${res.activity_id || 'KP20191216000002176162'}`,
@@ -94,37 +94,51 @@
 						},
 						fail: (res) => {}
 					});
-				} else if (type === 2 && res.activity_switch2) {
+				} else if (type === 2 && res.activity_switch2 === '1') {
 					// 第二个app
 					my.navigateToMiniProgram({
 						appId: '2018122562686742',
 						path: `pages/index/index?originAppId=2021001198661407&newUserTemplate=${res.activity_id2 || 'KP20201017000002732219'}`,
 					});
-				} else if (type === 3 && res.activity_switch3) {
+				} else if (type === 3 && res.activity_switch3 === '1') {
 					// 第三个app
 					my.navigateToMiniProgram({
 						appId: '2018122562686742',
 						path: `pages/index/index?originAppId=2021001198645779&newUserTemplate=${res.activity_id3 || 'KP20201017000002732087'}`,
 					});
-				} else if (type === 4 && res.activity_switch4) {
+				} else if (type === 4 && res.activity_switch4 === '1') {
 					// 第四个app
 					my.navigateToMiniProgram({
 						appId: '2018122562686742',
 						path: `pages/index/index?originAppId=2021001193682570&newUserTemplate=${res.activity_id4 || 'KP20201017000002732089'}`,
 					});
 				}
-				getApp().globalData.isShow = res['is_show_jf'+ type] === '1'
-				this.isShow = res['is_show_jf'+ type] === '1'
-				this.kefu = res.kefu_mobie
-				if (res['is_show_jf'+ type] === '1') {
-					const appId = '123'
-					const templateId = '123'
-					this.getAuth()
-					// this.noticeModal()
-					uni.showTabBar()
+				if (type === 1) {
+					getApp().globalData.isShow = res['is_show_jf'] === '1'
+					this.isShow = res['is_show_jf'] === '1'
+					if (res['is_show_jf'] === '1') {
+						const appId = '123'
+						const templateId = '123'
+						this.getAuth()
+						// this.noticeModal()
+						uni.showTabBar()
+					} else {
+						uni.hideTabBar()
+					}
 				} else {
-					uni.hideTabBar()
+					getApp().globalData.isShow = res['is_show_jf'+ type] === '1'
+					this.isShow = res['is_show_jf'+ type] === '1'
+					if (res['is_show_jf'+ type] === '1') {
+						const appId = '123'
+						const templateId = '123'
+						this.getAuth()
+						// this.noticeModal()
+						uni.showTabBar()
+					} else {
+						uni.hideTabBar()
+					}
 				}
+				this.kefu = res.kefu_mobie
 			},
 			getConfig () {
 				this.isLoad = true;
@@ -275,7 +289,7 @@
 			input{
 				flex: 1;
 				padding: 0;
-				color: #dd524d;
+				color: #007aff;
 				font-size: 14px;
 			}
 		}
@@ -327,12 +341,12 @@
 		line-height: 40px;
 		margin: 10px auto;
 		border-radius: 30px;
-		background: #dd524d;
+		background: #007aff;
 		color: #fff;
-		border: 1px solid #dd524d;
+		border: 1px solid #007aff;
 	}
 	.gs{
-		background: #dd524d;
+		background: #007aff;
 		color: #fff;
 		text-align: center;
 		font-size: 14px;
