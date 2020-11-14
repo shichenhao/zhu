@@ -1,10 +1,10 @@
 <template>
     <view class="box">
-		<view class="titleBox">
+		<view class="titleBox" v-if="isShow">
 			<image mode="widthFix" class="images" src="../../static/icon5.png"></image>
 		</view>
-		<view class="noticeT">业务处理通知</view>
-		<view class="noticeC">订单处理周期1个工作日，加急订单60分钟（早上8：30-晚上20：30）。告知单，通知书系统无法处理。</view>
+		<view class="noticeT" v-if="isShow">业务处理通知</view>
+		<view class="noticeC" v-if="isShow">订单处理周期1个工作日，加急订单60分钟（早上8：30-晚上20：30）。告知单，通知书系统无法处理。</view>
 		<view class="searchBox">
 			<view class="title">处罚决定书编号：</view>
 			<input confirm-type="search" @input="onKeyInput" maxlength="16" type="idcard" placeholder="《处罚决定书》编号15或16位" />
