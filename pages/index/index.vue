@@ -289,7 +289,7 @@
 			input{
 				flex: 1;
 				padding: 0;
-				color: #007aff;
+				color: #dd524d;
 				font-size: 14px;
 			}
 		}
@@ -341,12 +341,12 @@
 		line-height: 40px;
 		margin: 10px auto;
 		border-radius: 30px;
-		background: #007aff;
+		background: #dd524d;
 		color: #fff;
-		border: 1px solid #007aff;
+		border: 1px solid #dd524d;
 	}
 	.gs{
-		background: #007aff;
+		background: #dd524d;
 		color: #fff;
 		text-align: center;
 		font-size: 14px;

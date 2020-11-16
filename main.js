@@ -9,7 +9,7 @@ Vue.config.productionTip = false
 Vue.prototype.$request = request
 Vue.prototype.$api = api
 Vue.prototype.$url = url
-Vue.prototype.$type = 1
+Vue.prototype.$type = 4
 
 App.mpType = 'app'
 

@@ -8,8 +8,8 @@
   "subPackages": [],
   "window": {
     "defaultTitle": "uni-app",
-    "titleBarColor": "#007aff",
-    "backgroundColor": "#007aff"
+    "titleBarColor": "#dd524d",
+    "backgroundColor": "#dd524d"
   },
   "tabBar": {
     "textColor": "#333",
