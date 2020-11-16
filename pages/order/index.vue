@@ -149,12 +149,24 @@
 					return false;
 				}
 				const params = {
-					appid: '2021001198645779',
+					appid: '2019101468369526',
 					fkdbh: this.orderInfo.jdsbh,
 					user_id: getApp().globalData.userId,
 					jiaji: this.current,
 					mobile: this.mobile,
 					total: this.current ===0 ? this.orderInfo.total : this.orderInfo.jiaji_total
+				}
+				if (this.$type === 1) {
+					params.appid = '2019101468369526'
+				}
+				else if (this.$type === 2) {
+					params.appid = '2021001198661407'
+				}
+				else if (this.$type === 3) {
+					params.appid = '2021001198645779'
+				}
+				else if (this.$type === 4) {
+					params.appid = '2021001193682570'
 				}
 				this.$api.pay(params).then(res => {
 					my.tradePay({
