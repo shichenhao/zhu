@@ -8,7 +8,7 @@
     /* 5+App特有相关 */
     "app-plus" : {
         "usingComponents" : true,
-        "nvueCompiler" : "uni-app",
+        "nvueCompiler" : "宏科网",
         "splashscreen" : {
             "alwaysShowBeforeRender" : true,
             "waiting" : true,
@@ -63,6 +63,12 @@
         "usingComponents" : true
     },
     "mp-alipay" : {
+		"plugins": {
+		    "myPlugin": {
+		      "version": "*", 
+		      "provider": "2019102468552682"
+		    }
+		},
         "usingComponents" : true
     },
     "mp-baidu" : {

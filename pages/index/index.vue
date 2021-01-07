@@ -1,5 +1,8 @@
 <template>
     <view class="box">
+		<navigator class="boxBtn" url="plugin://myPlugin/index?pid=2088631566090921&appId=2021001198645779">
+			<image mode="widthFix" src="../../static/banner.jpg">
+		</navigator>
 		<view class="titleBox" v-if="isShow">
 			<image mode="widthFix" class="images" src="../../static/icon5.png"></image>
 		</view>
@@ -252,6 +255,12 @@
 
 <style lang="less">
 	.box{
+		.boxBtn{
+			image{
+				width: 100%;
+				display: block;
+			}
+		}
 		.titleBox{
 			border: 1px solid #ccc;
 			background: #fff;
