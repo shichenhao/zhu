@@ -5,6 +5,10 @@
   position: relative;
   padding-bottom: 60px;
 }
+.box .boxBtn image {
+  width: 100%;
+  display: block;
+}
 .box .titleBox {
   border: 1px solid #ccc;
   background: #fff;

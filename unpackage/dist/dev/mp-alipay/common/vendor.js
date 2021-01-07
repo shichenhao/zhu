@@ -1462,7 +1462,7 @@ function initData(vueOptions, context) {
     try {
       data = data.call(context); // 支持 Vue.prototype 上挂的数据
     } catch (e) {
-      if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-alipay","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"NODE_ENV":"development","VUE_APP_NAME":"ke","VUE_APP_PLATFORM":"mp-alipay","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.warn('根据 Vue 的 data 函数初始化小程序 data 失败，请尽量确保 data 函数中不访问 vm 对象，否则可能影响首次数据渲染速度。', data);
       }
     }
@@ -2172,7 +2172,7 @@ function handleRef(ref) {
 }
 
 function triggerEvent(type, detail, options) {
-  var handler = this.props[customize('on-' + type)];
+  var handler = this.props && this.props[customize('on-' + type)];
   if (!handler) {
     return;
   }
@@ -2415,7 +2415,8 @@ function parsePage(vuePageOptions) {var _initVueComponent =
 
     __r: handleRef,
     __e: handleEvent,
-    __l: handleLink$1 };
+    __l: handleLink$1,
+    triggerEvent: triggerEvent };
 
 
   initHooks(pageOptions, hooks$1, vuePageOptions);
@@ -8172,7 +8173,7 @@ function type(obj) {
 
 function flushCallbacks$1(vm) {
     if (vm.__next_tick_callbacks && vm.__next_tick_callbacks.length) {
-        if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-alipay","BASE_URL":"/"}).VUE_APP_DEBUG) {
+        if (Object({"NODE_ENV":"development","VUE_APP_NAME":"ke","VUE_APP_PLATFORM":"mp-alipay","BASE_URL":"/"}).VUE_APP_DEBUG) {
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:flushCallbacks[' + vm.__next_tick_callbacks.length + ']');
@@ -8193,14 +8194,14 @@ function nextTick$1(vm, cb) {
     //1.nextTick 之前 已 setData 且 setData 还未回调完成
     //2.nextTick 之前存在 render watcher
     if (!vm.__next_tick_pending && !hasRenderWatcher(vm)) {
-        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-alipay","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"NODE_ENV":"development","VUE_APP_NAME":"ke","VUE_APP_PLATFORM":"mp-alipay","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:nextVueTick');
         }
         return nextTick(cb, vm)
     }else{
-        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-alipay","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"NODE_ENV":"development","VUE_APP_NAME":"ke","VUE_APP_PLATFORM":"mp-alipay","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance$1 = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance$1.is || mpInstance$1.route) + '][' + vm._uid +
                 ']:nextMPTick');
@@ -8286,7 +8287,7 @@ var patch = function(oldVnode, vnode) {
     });
     var diffData = this.$shouldDiffData === false ? data : diff(data, mpData);
     if (Object.keys(diffData).length) {
-      if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-alipay","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"NODE_ENV":"development","VUE_APP_NAME":"ke","VUE_APP_PLATFORM":"mp-alipay","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + this._uid +
           ']差量更新',
           JSON.stringify(diffData));
@@ -8723,9 +8724,9 @@ module.exports = g;
 
 /***/ }),
 /* 4 */
-/*!************************************!*\
-  !*** /Users/edz/my/zhu/pages.json ***!
-  \************************************/
+/*!*************************************************!*\
+  !*** /Users/sch/Desktop/work/my/zhu/pages.json ***!
+  \*************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -8866,9 +8867,9 @@ function normalizeComponent (
 
 /***/ }),
 /* 11 */
-/*!****************************************!*\
-  !*** /Users/edz/my/zhu/api/request.js ***!
-  \****************************************/
+/*!*****************************************************!*\
+  !*** /Users/sch/Desktop/work/my/zhu/api/request.js ***!
+  \*****************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -8919,9 +8920,9 @@ request;exports.default = _default;
 
 /***/ }),
 /* 12 */
-/*!***************************************!*\
-  !*** /Users/edz/my/zhu/api/config.js ***!
-  \***************************************/
+/*!****************************************************!*\
+  !*** /Users/sch/Desktop/work/my/zhu/api/config.js ***!
+  \****************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -8937,9 +8938,9 @@ url_config;exports.default = _default;
 
 /***/ }),
 /* 13 */
-/*!**************************************!*\
-  !*** /Users/edz/my/zhu/api/index.js ***!
-  \**************************************/
+/*!***************************************************!*\
+  !*** /Users/sch/Desktop/work/my/zhu/api/index.js ***!
+  \***************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 

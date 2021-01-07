@@ -1,51 +1,54 @@
 {
-	"pages": [
-		{
-			"path": "pages/index/index",
-			"style": {
-				"navigationBarTitleText": "违章罚款单查询-宏柯网"
-			}
-		},
-		{
-			"path": "pages/record/index",
-			"style": {
-				"navigationBarTitleText": "我的订单"
-			}
-		},
-		{
-			"path": "pages/order/index",
-			"style": {
-				"navigationBarTitleText": "订单确认"
-			}
-		},
-		{
-			"path": "pages/orderInfo/index",
-			"style": {
-				"navigationBarTitleText": "订单详情"
-			}
-		}
-    ],
-	"globalStyle": {
-		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "uni-app",
-		"navigationBarBackgroundColor": "#4cd964",
-		"backgroundColor": "#4cd964"
-	},
-	"tabBar": {
-	    "color": "#333",
-	    "selectedColor": "#007AFF",
-	    "borderStyle": "black",
-	    "backgroundColor": "#ffffff",
-	    "list": [{
-	        "pagePath": "pages/index/index",
-			"iconPath": "static/icon7.png",
-			"selectedIconPath": "static/icon8.png",
-	        "text": "查询"
-	    }, {
-	        "pagePath": "pages/record/index",
-			"iconPath": "static/icon9.png",
-			"selectedIconPath": "static/icon11.png",
-	        "text": "我的"
-	    }]
-	}
+  "pages": [
+    {
+      "path": "pages/index/index",
+      "style": {
+        "navigationBarTitleText": "宏柯网-违章查询"
+      }
+    },
+    {
+      "path": "pages/record/index",
+      "style": {
+        "navigationBarTitleText": "我的订单"
+      }
+    },
+    {
+      "path": "pages/order/index",
+      "style": {
+        "navigationBarTitleText": "订单确认"
+      }
+    },
+    {
+      "path": "pages/orderInfo/index",
+      "style": {
+        "navigationBarTitleText": "订单详情"
+      }
+    }
+  ],
+  "globalStyle": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "uni-app",
+    "navigationBarBackgroundColor": "#007AFF",
+    "backgroundColor": "#007AFF"
+  },
+  "tabBar": {
+    "color": "#333",
+    "selectedColor": "#007AFF",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "static/icon7.png",
+        "selectedIconPath": "static/icon8.png",
+        "text": "查询"
+      },
+      {
+        "pagePath": "pages/record/index",
+        "iconPath": "static/icon9.png",
+        "selectedIconPath": "static/icon11.png",
+        "text": "我的"
+      }
+    ]
+  }
 }
