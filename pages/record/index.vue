@@ -55,9 +55,9 @@
 				} else if (this.$type === 2) {
 					return '#dd524d'
 				} else if (this.$type === 3) {
-					return '#f0ad4e'
-				} else if (this.$type === 4) {
 					return '#4cd964'
+				} else if (this.$type === 4) {
+					return '#f0ad4e'
 				}
 			},
 			getList (index) {

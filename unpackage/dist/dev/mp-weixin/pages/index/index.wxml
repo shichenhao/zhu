@@ -1,1 +1,0 @@
-<view class="box"><view class="searchBox"><view class="searchTitle">输入编号</view><input confirm-type="search" placeholder="键盘右下角按钮显示为搜索"/></view></view>
