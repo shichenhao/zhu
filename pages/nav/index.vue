@@ -1,37 +1,40 @@
 <template>
     <view class="box">
-		<navigator class="boxBtn" url="plugin://myPlugin/index?pid=2088041598700680&appId=2021002125610923">
+		<!--navigator class="boxBtn" url="plugin://myPlugin/index?pid=2088631566090921&appId=2019101468369526">
 			<image mode="widthFix" src="../../static/banner.jpg">
-		</navigator>
-		<view class="titleBox" v-if="isShow">
-			<image mode="widthFix" class="images" src="../../static/icon5.png"></image>
-		</view>
-		<view class="noticeT" v-if="isShow">业务处理通知</view>
-		<view class="noticeC" v-if="isShow">订单处理周期1个工作日，加急订单60分钟（早上8：30-晚上20：30）。告知单，通知书系统无法处理。</view>
-		<view class="searchBox">
-			<view class="title">处罚决定书编号：</view>
-			<input confirm-type="search" @input="onKeyInput" maxlength="16" type="idcard" placeholder="《处罚决定书》编号15或16位" />
-		</view>
-		<view class="noticeTit" v-if="isShow">
-			<view>
-				*订单24小时内完成，加急单60分钟
+		</navigator-->
+		<view class="navHeader">
+			<view class="navBox">
+				<view @click="goUrl()">
+					<image src="../../static/b_03.png" mode="widthFix"></image>
+					罚单缴纳
+				</view>
+				<view v-if="types.is_show_wz === '1'">
+					<image src="../../static/b_05.png" mode="widthFix"></image>
+					违章查询
+				</view>
+				<view v-if="types.is_show_xx === '1'">
+					<image src="../../static/b_07.png" mode="widthFix"></image>
+					限行查询
+				</view>
+				<view v-if="types.is_show_cf === '1'">
+					<image src="../../static/b_09.png" mode="widthFix"></image>
+					驾照查分
+				</view>
 			</view>
-			<!--view>
-				<icon type="info" size="16"/>
-				<text @click="noticeModal">办理须知</text>
-			</view-->
 		</view>
-		<button class="button" @click="searchInfo">查询</button>
-		<!--button v-if="canIUseAuthButton" open-type="getAuthorize"
-		        @onGetAuthorize="onGetAuthorize" @onError="onAuthError" scope='phoneNumber'>
-		    授权手机号
-		</button-->
-		<view class="cjsTit" v-if="isShow">
-			请参照下图填写[处罚决定书编号]
+		<view class="navBg">
+			<view class="searchBox">
+				<input confirm-type="search" @input="onKeyInput" maxlength="16" type="idcard" placeholder="《处罚决定书》编号15或16位" />
+			</view>
+			<button class="button" @click="searchInfo">立即查询</button>
 		</view>
-		<view class="cjsCont" v-if="isShow">
-			<image mode="widthFix" class="images" src="../../static/icon4.png"></image>
-			<image mode="widthFix" class="images" src="../../static/icon12.png"></image>
+		<image v-if="types.is_show_wz === '1'" @click="goUrl()" src="../../static/a_03.png" mode="widthFix"></image>
+		<image v-if="types.is_show_xx === '1'" src="../../static/a_04.png" mode="widthFix"></image>
+		<image v-if="types.is_show_cf === '1'" src="../../static/a_05.png" mode="widthFix"></image>
+		<view class="gs">
+			<text v-if="kefu">服务热线：{{kefu}}</text>
+			<text>工作时间早8:00到晚8:00</text>
 		</view>
     </view>
 </template>
@@ -41,6 +44,7 @@ export default {
   data() {
     return {
       isShow: getApp().globalData.isShow,
+	  types: null,
       inputValue: '',
       kefu: null,
       isLoad: false,
@@ -83,35 +87,7 @@ export default {
       }
     },
     getActivity(type, res) {
-      // 第一个app
-      if (type === 1 && res.activity_switch1 === '1') {
-        my.navigateToMiniProgram({
-          appId: '2018122562686742',
-          path: `pages/index/index?originAppId=2021002125610923&newUserTemplate=${res.activity_id || 'KP20191216000002176162'}`,
-          success: (res) => {
-            console.log(1, res)
-          },
-          fail: (res) => { }
-        });
-      } else if (type === 2 && res.activity_switch2 === '1') {
-        // 第二个app
-        my.navigateToMiniProgram({
-          appId: '2018122562686742',
-          path: `pages/index/index?originAppId=2021001198661407&newUserTemplate=${res.activity_id2 || 'KP20201017000002732219'}`,
-        });
-      } else if (type === 3 && res.activity_switch3 === '1') {
-        // 第三个app
-        my.navigateToMiniProgram({
-          appId: '2018122562686742',
-          path: `pages/index/index?originAppId=2021001198645779&newUserTemplate=${res.activity_id3 || 'KP20201017000002732087'}`,
-        });
-      } else if (type === 4 && res.activity_switch4 === '1') {
-        // 第四个app
-        my.navigateToMiniProgram({
-          appId: '2018122562686742',
-          path: `pages/index/index?originAppId=2021001193682570&newUserTemplate=${res.activity_id4 || 'KP20201017000002732089'}`,
-        });
-      }
+		this.types = res
       if (type === 1) {
         getApp().globalData.isShow = res['is_show_jf'] === '1'
         this.isShow = res['is_show_jf'] === '1'
@@ -142,6 +118,7 @@ export default {
     getConfig() {
       this.isLoad = true;
       this.$api.config().then(res => {
+		  console.log(res, 99)
         this.getActivity(this.$type, res)
       }).catch(err => {
         console.log(err)
@@ -159,10 +136,10 @@ export default {
     getUserInfo(auth) {
       const params = {
         'auth_code': auth,
-        'appid': '2021001198645779'
+        'appid': '2021002125610923'
       }
       if (this.$type === 1) {
-        params.appid = '2019101468369526'
+        params.appid = '2021002125610923'
       }
       else if (this.$type === 2) {
         params.appid = '2021001198661407'
@@ -197,21 +174,11 @@ export default {
         console.log(err)
       })
     },
-    noticeModal() {
-      uni.showModal({
-        title: '业务处理通知',
-        content: '订单处理周期1个工作日，加急订单60分钟（早上8：30-晚上20：30）。告知单，通知书系统无法处理。',
-        showCancel: false,
-        confirmText: '我知道了',
-        success: function (res) {
-          if (res.confirm) {
-            console.log('用户点击确定');
-          } else if (res.cancel) {
-            console.log('用户点击取消');
-          }
-        }
-      });
-    },
+	goUrl() {
+		uni.navigateTo({
+			url: '../index/index'
+		})
+	},
     searchInfo() {
       if (!getApp().globalData.userId) {
         this.getAuth()
@@ -251,40 +218,61 @@ export default {
 
 <style lang="less">
 .box {
+	padding-bottom: 40px;
+	position: relative;
+	image{
+		width: 100%;
+		display: block;
+	}
+	.navHeader{
+		height: 904rpx;
+		background: url(../../static/a_01.png) no-repeat;
+		background-size: 100%;
+		position: relative;
+		.navBox{
+			position: absolute;
+			left: 50rpx;
+			right: 50rpx;
+			bottom: 30rpx;
+			height: 156rpx;
+			display: flex;
+			justify-content: center;
+			
+			view{
+				width: 150rpx;
+				text-align: center;
+				color: #fff;
+				font-size: 25rpx;
+				font-weight: bold;
+				image{
+					width: 75rpx;
+					margin: 20rpx auto 10rpx;
+				}
+			}
+		}
+	}
+	.navBg{
+		padding: 110rpx 60rpx 0;
+		height: 666rpx;
+		box-sizing: border-box;
+		background: url(../../static/a_02.png) no-repeat;
+		background-size: auto 666rpx;
+	}
   .boxBtn {
     image {
       width: 100%;
       display: block;
     }
   }
-  .titleBox {
-    border: 1px solid #ccc;
-    background: #fff;
-    .images {
-      width: 99%;
-    }
-  }
-  min-height: 100vh;
-  background: #eee;
-  color: #fff;
-  position: relative;
-  padding-bottom: 60px;
-  .searchTitle {
-    font-size: 16px;
-    font-weight: bold;
-    line-height: 30px;
-    color: #333;
-    padding: 10px;
-    border-bottom: 1rpx solid #ccc;
-  }
   .searchBox {
     background: #fff;
     display: flex;
-    height: 60px;
-    border-top: 10px solid #eee;
+    height: 80rpx;
     padding: 0 10px;
     align-items: center;
     justify-content: space-between;
+	border-radius: 10rpx;
+	box-shadow: 0 -5rpx 10rpx #1874d9;
     .title {
       font-weight: bold;
       font-size: 14px;
@@ -299,63 +287,25 @@ export default {
     }
   }
 }
-.noticeTit {
-  padding: 10px 10px 0;
-  display: flex;
-  justify-content: space-between;
-  color: #666;
-  align-items: center;
-  view {
-    display: flex;
-    align-items: center;
-  }
-  text {
-    margin-left: 5px;
-  }
-}
-.noticeT {
-  font-size: 14px;
-  font-weight: bold;
-  color: #333;
-  padding: 20px 10px 10px;
-}
-.noticeC {
-  padding: 0 10px;
-  font-size: 12px;
-  color: #666;
-}
-.cjsTit {
-  color: #333;
-  font-size: 12px;
-  text-align: center;
-}
-.cjsTit2 {
-  padding-top: 10px;
-}
-.cjsCont {
-  padding-bottom: 20px;
-  text-align: center;
-  image {
-    display: block;
-    margin: 10px auto 0;
-  }
-}
 .button {
-  width: 150px;
-  height: 40px;
-  line-height: 40px;
-  margin: 10px auto;
-  border-radius: 30px;
-  background: #007aff;
+  width: 260rpx;
+  height: 64rpx;
+  line-height: 64rpx;
+  margin: 40rpx auto 0;
+  border-radius: 64rpx;
+  background: #f4af4d;
   color: #fff;
-  border: 1px solid #007aff;
+  font-size: 20rpx;
+  font-weight: bold;
+  border: 0 none;
+  box-shadow: 0 -5rpx 10rpx #1874d9;
 }
 .gs {
   background: #007aff;
   color: #fff;
   text-align: center;
   font-size: 14px;
-  padding: 10px 20px;
+  padding: 10px 10rpx;
   position: absolute;
   bottom: 0;
   left: 0;

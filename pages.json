@@ -1,9 +1,15 @@
 {
   "pages": [
     {
+      "path": "pages/nav/index",
+      "style": {
+        "navigationBarTitleText": "宏柯网-车务通违章查询"
+      }
+    },
+    {
       "path": "pages/index/index",
       "style": {
-        "navigationBarTitleText": "宏柯网-违章查询"
+        "navigationBarTitleText": "宏柯网-车务通违章查询"
       }
     },
     {

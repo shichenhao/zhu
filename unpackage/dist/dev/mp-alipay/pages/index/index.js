@@ -176,10 +176,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 var _default =
 {
   data: function data() {
@@ -231,7 +227,7 @@ var _default =
       if (type === 1 && res.activity_switch1 === '1') {
         my.navigateToMiniProgram({
           appId: '2018122562686742',
-          path: "pages/index/index?originAppId=2019101468369526&newUserTemplate=".concat(res.activity_id || 'KP20191216000002176162'),
+          path: "pages/index/index?originAppId=2021002125610923&newUserTemplate=".concat(res.activity_id || 'KP20191216000002176162'),
           success: function success(res) {
             console.log(1, res);
           },
