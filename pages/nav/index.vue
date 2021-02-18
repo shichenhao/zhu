@@ -175,7 +175,7 @@ export default {
       })
     },
 	goUrl() {
-		uni.navigateTo({
+		uni.switchTab({
 			url: '../index/index'
 		})
 	},

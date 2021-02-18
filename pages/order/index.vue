@@ -149,7 +149,7 @@
 					return false;
 				}
 				const params = {
-					appid: '2019101468369526',
+					appid: '2021002125610923',
 					fkdbh: this.orderInfo.jdsbh,
 					user_id: getApp().globalData.userId,
 					jiaji: this.current,
@@ -157,7 +157,7 @@
 					total: this.current ===0 ? this.orderInfo.total : this.orderInfo.jiaji_total
 				}
 				if (this.$type === 1) {
-					params.appid = '2019101468369526'
+					params.appid = '2021002125610923'
 				}
 				else if (this.$type === 2) {
 					params.appid = '2021001198661407'

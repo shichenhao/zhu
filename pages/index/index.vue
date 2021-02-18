@@ -159,10 +159,10 @@ export default {
     getUserInfo(auth) {
       const params = {
         'auth_code': auth,
-        'appid': '2021001198645779'
+        'appid': '2021002125610923'
       }
       if (this.$type === 1) {
-        params.appid = '2019101468369526'
+        params.appid = '2021002125610923'
       }
       else if (this.$type === 2) {
         params.appid = '2021001198661407'
